@@ -2271,3 +2271,43 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+/* 1. Colocando layout lado a lado */
+#banner {
+  display: flex;
+  align-items: stretch; /* faz a imagem ter a mesma altura que o texto */
+  gap: 2rem;
+}
+
+/* 2. Texto ocupa espaço disponível */
+#banner .content {
+  flex: 1;
+}
+
+/* 3. Imagem alinhada e proporcional */
+#banner .banner-image {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center; /* centra verticalmente se o texto for menor */
+}
+#banner .banner-image img {
+  height: 100%;
+  max-width: 250px; /* limite para não sair do lugar */
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 4. Responsividade: em telas pequenas vira coluna */
+@media (max-width: 768px) {
+  #banner {
+    flex-direction: column;
+    align-items: center;
+  }
+  #banner .banner-image img {
+    width: 50%;
+    height: auto;
+    max-width: none;
+  }
+}
+
